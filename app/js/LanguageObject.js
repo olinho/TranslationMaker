@@ -8,7 +8,7 @@ function Language(type) {
 		flagImgEl = $("#inputLanguageFlag");
 		popupTriggerEl = $("#inputLanguagePopupTrigger");
 		// set default input language
-		firstFlagIndex = 1;
+		firstFlagIndex = 2;
 	} else if (type == 'output'){
 		flagContainer = $("#outputLanguageFlagContainer");	
 		flagImgEl = $("#outputLanguageFlag");

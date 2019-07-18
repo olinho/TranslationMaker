@@ -66,5 +66,6 @@ function startWebService() {
 		var info = "Server is disconnected.";
 		console.log(info);
 		displayPopupMsg(info);
+		onServerDisconnected();
 	};
 }

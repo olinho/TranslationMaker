@@ -11,14 +11,12 @@ use translationmaker\PHPWebSocket as PHPWebSocket;
 use translationmaker\PSQLSelect as PSQLSelect;
 
 try {
-	
 	$Server = new PHPWebSocket();
 
 	$pdo = Connection::get()->connect();
 	$Server->bind('message', 'wsOnMessage');
 	$Server->wsStartServer('localhost', 9000); 
 	
-
 } catch (\PDOException $e) {
 	echo $e->getMessage();
 }
@@ -45,13 +43,28 @@ function wsOnMessage($clientID, $msg, $msgLen, $binary) {
 	else if ($queryType == "getTermTranslation") {
 		$resp = getTermTranslation($data);
 	}
+	else if ($queryType == "refreshDictionary") {
+		$resp = getAllTermsForLanguage($data);
+	}
 	echo $resp . "\n";
 
 	$Server->wsSend($clientID, $resp);
 }
 
 
+function getAllTermsForLanguage($strJSON) {
+	$pdo = Connection::get()->connect();
+	$dbHandler = new PSQLSelect($pdo);
+	$resp = "";
 
+	$data = $strJSON->jsonData;
+	$lang_fullname = $data->lang;
+
+	$resp = $dbHandler->getAllTermsForLanguage($lang_fullname);
+	return $resp;
+}
+
+// TODO: init once dbHandler
 function getTermTranslation($strJSON) {
 	$pdo = Connection::get()->connect();
 	$dbHandler = new PSQLSelect($pdo);

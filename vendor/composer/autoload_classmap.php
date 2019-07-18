@@ -11,4 +11,5 @@ return array(
     'translationmaker\\PSQLGetTables' => $baseDir . '/app/PSQLGetTables.php',
     'translationmaker\\PSQLInsert' => $baseDir . '/app/PSQLInsert.php',
     'translationmaker\\PSQLSelect' => $baseDir . '/app/PSQLSelect.php',
+    'translationmaker\\DictionaryUpdator' => $baseDir . '/app/php/DictionaryUpdator.php',
 );

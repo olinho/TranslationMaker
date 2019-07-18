@@ -30,7 +30,7 @@ function keyboardShortcutService() {
 
 		// CTRL + ENTER
 		// COMMIT INPUT
-		if (event.ctrlKey && code == 13) {
+		if (event.ctrlKey && code == 13 && inputTextarea.textContent !== '') {
 			if ( hasFocusInputSentenceTextarea() ) {
 				if (translationState.getInstance().isActivated()){
 					setCommunicatorText('The input ' + textType + ' is approved. Enter translation.');

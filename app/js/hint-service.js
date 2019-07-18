@@ -1,4 +1,18 @@
 
+
+// TODO
+function refreshDictionary() {
+	var jsonData = Object();
+	jsonData['lang'] = 'lemkos';
+	var data = {
+		'queryType': 'refreshDictionary',
+		'data': { jsonData }
+	};
+	var strData = JSON.stringify(data);
+	socket.send(strData);
+}
+
+
 function addHint(term) {
 	var fstEmptyRow = getFirstEmptyHintRow();
 	$(fstEmptyRow).find("td").text(term);

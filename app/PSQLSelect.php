@@ -22,9 +22,23 @@ class PSQLSelect {
 		$stmt->bindValue(':out_lang', $out_lang);
 		
 		$stmt->execute();
-		
 		return json_encode($stmt->fetchObject());
 	}
+
+
+	public function getAllTermsForLanguage($lang_fullname) {
+		$stmt = $this->pdo->prepare(
+			'SELECT DISTINCT(term) from terms where lang_id = (SELECT id from languages where fullname = :lang)');
+		$stmt->bindValue(':lang', $lang_fullname);
+
+		$stmt->execute();
+		$terms = [];
+		while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+			$terms[] = $row['term'];
+		}
+		return json_encode($terms);
+	}
+
 
 	public function getLanguages() {
 		$stmt = $this->pdo->query('SELECT fullname FROM languages');

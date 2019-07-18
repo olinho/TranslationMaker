@@ -1,0 +1,8 @@
+Run in console 
+php server.php
+
+Then you can use this app.
+
+In case of error: Uncaught Error: Call to undefined function socket_create()
+Go to xampp/php/php.ini file and add extension
+extension=php_sockets.dll

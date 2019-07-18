@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>PDO Tutorial</title>
+	<!-- Bootstrap -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href = "jquery-ui/jquery-ui.css"
+   rel = "stylesheet">
+   	<link href="app/css/base_style.css" rel="stylesheet">
+   	<script src="app/js/jquery.js"></script>
+  	<script src="bootstrap/js/bootstrap.min.js"></script>
+  	<script src="jquery-ui/jquery-ui.min.js"></script>
+
+	<script src="app/js/web-server-service.js"></script>
+	<script src="app/js/global-variables.js"></script>
+	<script src="app/js/general-functions.js"></script>
+
+	<script src="app/js/communicator-service.js"></script>
+
+	<script src="app/js/LanguageObject.js"></script>
+	<script src="app/js/language-service.js"></script>
+
+	<script src="app/js/keyboard-service.js"></script>
+
+	<script src="app/js/TranslationStateObject.js"></script>
+	<script src="app/js/settings-service.js"></script>
+
+	<script src="app/js/sentence-service.js"></script>
+	<script src="app/js/textarea-service.js"></script>
+	<script src="app/js/hint-service.js"></script>
+
+	<script src="app/js/info-popup-service.js"></script>
+
+	<script src="app/js/main.js"></script>
+</head>
+  
+<body>
+	<div class="container">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+			    <div class="navbar-brand">TranslationMaker</div>
+				  <div class="navbar-text" id='communicatorEnvelope'>
+				  	<div id="communicator">Здраствуйте!</div>
+				  </div>
+				  <!-- Message popup -->
+				<div class="alert info-popup" onclick="fadeOutMyself(this)">
+					<div class="popup-content">
+					</div>
+				</div>
+
+
+			  <div class="col-sm-2 pull-right navbar-text">
+			  	<div id='settingsDropdownDiv' class="dropdown">
+			  		<button id='settingsBtn' type="button">Settings<span class="caret"></span></button>
+  					<div class="dropdown-menu list-group">
+  						<a id="translationActivator" href="#" class="list-group-item list-group-item-success" title="Click to change">Translation activated</a>
+  						<a id="serverConnectionStatus" href="#" class="list-group-item list-group-item-danger" title="Server connection status">Disconnected</a>
+  					  <!-- input language popup trigger -->
+						<a id="inputLanguagePopupTrigger" href="#" class="list-group-item" data-toggle="modal" data-target="#languageModalDiv">Input language</a>
+						<a id="outputLanguagePopupTrigger" href="#" class="list-group-item" data-toggle="modal" data-target="#languageModalDiv">Output language</a>
+					</div>
+		  		</div>
+		  		<!-- end settingsDropdownDiv -->
+			  </div>
+			  <!-- end navbar right section -->
+			</div>
+		</nav>
+
+		<div class="row">
+			<div id='textTypeDivToggler' class="modal-body btn-group" data-toggle="buttons">
+				<label class="btn btn-default" value="sentence"><input name="textType" type="radio" checked="checked" value="sentence" />Sentence</label>
+				<label class="btn btn-default btn-success" value="term"><input name="textType" type="radio" checked="" value="term" />Term</label>
+      </div>
+      <!-- end textTypeDivToggler -->
+    </div>
+
+
+
+    <div class="row textPanel">
+			<div class="col-xs-7 form-group">
+				<div id="inputSector" class="form-group">
+					<div class="row">
+			      <div class="row">
+							<div class="col-xs-6">
+								<div id="inputLanguagePanel" class="col-sm-4 col-xs-5">
+									<div id='inputLanguageFlagContainer'>
+										<img id='inputLanguageFlag' src="" class='img-rounded img-responsive' alt="" />
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<label><mark>Input</mark></label>
+								</div>
+							</div>
+						</div>
+						<div id="inputTextarea" class="form-control textDiv" contenteditable></div>
+					</div>
+					<!-- end row -->
+				</div>	
+				<!-- end inputSector -->
+
+				<div class="row baseDivider"></div>
+			
+
+				<div id='outputSector' class="form-group">	
+					<div class="row">
+						<div class="row">
+							<div class="col-xs-6">
+								<div id="outputLanguagePanel" class="col-sm-4 col-xs-5">
+									<div id='outputLanguageFlagContainer'>
+										<img id='outputLanguageFlag' src="" class='img-rounded img-responsive' alt="" />
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<label><mark>Translation</mark></label>
+								</div>
+							</div>
+						</div>
+						<div id="outputTextarea" class="form-control textDiv" rows="3" disabled="disabled" contenteditable></div>
+					</div>
+					<!-- end row -->
+
+				</div>
+				<!-- end outputSector -->
+			</div>
+			<!-- end main col-8 -->
+
+
+			<!-- start right panel with hints -->
+			<div class="col-xs-4 pull-right form-group">
+				<div class="row">
+					<label><mark>Terms translations</mark></label>
+					<table id="hint-table" class="table table-dark"><thead>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+					</thead></table>
+				</div>
+			</div>	
+			<!-- end main col-4 -->
+
+		</div>
+		<!-- end text panel -->
+
+		
+		<div class="baseDivider"></div>
+
+		<div class="row tipPanel">
+			<div class='col-sm-8'>
+				<small>
+					<p>Use <kbd>ctrl + ENTER</kbd> to save the sentence.</p>
+					<p><kbd>alt + &uarr; &darr;</kbd> to skip between hints</p>
+					<p><kbd>alt + ENTER</kbd> to choose hint</p>
+					<p>Turn <kbd>on/off translation</kbd> in settings panel.</p>
+					<p>Choose <kbd>language</kbd> in settings panel.</p>
+					<p><kbd>ctrl + ></kbd> to load terms from sentence</p>
+					<p><kbd>alt + [1,2,3,4]</kbd> to toggle focus between textareas</p>
+					<p><kbd>ctrl + ~</kbd> to reset sentence</p>
+				</small>
+			</div>
+		</div>
+	</div>
+<?php include 'app/language-popup.php'; ?>
+
+</body>
+</html>

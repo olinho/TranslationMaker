@@ -1,0 +1,119 @@
+body {
+	padding-top: 70px;
+	background: #e0e6f6;
+}
+
+
+#outputLanguageFlagContainer, #inputLanguageFlagContainer {
+	width: 50px;
+	height: 30px;
+	display: flex;
+}
+
+#communicatorEnvelope {
+	display: inline-block;
+	width: 30%;
+}
+
+#communicatorLeftCurtain {
+	width: 170px;
+	height: 50px;
+	top: 0;
+	background: #222;
+	z-index: -1;
+	position: absolute;
+}
+
+#communicator {
+	color: azure;
+	z-index: -2;
+}
+
+#settingsBtn {
+	background: none;
+	border: 0px;
+}
+
+#settingsDropdownDiv:hover {
+	color: beige;
+}
+
+#settingsDropdownDiv a {
+	text-decoration: none;
+}
+
+.baseDivider {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 8px;
+	width: 100%;
+	background: linear-gradient(to right, rgba(115, 131, 222, 0.22) 0%, rgba(50, 27, 105, 0.27) 100%);
+}
+
+/*.termTextarea {
+	background: #222;
+	color: white;
+	font-family: Dejavu Sans;
+}*/
+
+.textDiv {
+	  /* We use below options to set specifical behaviour for 
+  different browsers */
+  -moz-appearance: textfield-multiline; /* Firefox */
+  -webkit-appearance: textarea;  /* Safari */
+
+  border: 1px solid gray;
+  font: medium -moz-fixed;
+  font-family: arial,sans-serif;
+  /* Scroll-bar will be added if content exceeds div size.
+  In other case scroll-bar is off. */
+  overflow: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* Element is resizeable in two directions */
+  resize: both;
+  width: 100%;
+  height: 90px;
+  /*Display element as inline element with width and height*/
+  display: block;
+  /*Whitespace is preserved by the browser. 
+  Text will wrap when necessary, and on line breaks */
+  white-space: pre-wrap;
+	
+}
+
+/* *******************
+	HINTS
+********************* */
+#hint-table td {
+	background-color: #efefd1;
+	margin: 2px;
+	display: inline-flex;
+	border: solid gray;
+	padding: 2px;
+	cursor: pointer;
+}
+
+#hint-table tr.selected-hint td {
+	background-color: #abab7b;
+}
+
+#hint-table tr {
+	display: none;
+}
+
+/* ****************
+	INFO POPUP
+**************** */
+
+.info-popup {
+	display: inline-block;
+	position: fixed;
+	max-width: 200px;
+	left: 50%;
+	top: -100px;
+	opacity: 0;
+	cursor: pointer;
+}

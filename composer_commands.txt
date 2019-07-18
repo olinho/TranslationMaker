@@ -1,0 +1,5 @@
+1. On starting project
+composer update
+
+2. On updating project:
+composer dump-autoload -o

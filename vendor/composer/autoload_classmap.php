@@ -7,9 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'translationmaker\\Connection' => $baseDir . '/app/Connection.php',
+    'translationmaker\\DictionaryManager' => $baseDir . '/app/DictionaryManager.php',
     'translationmaker\\PHPWebSocket' => $baseDir . '/app/PHPWebSocket.php',
     'translationmaker\\PSQLGetTables' => $baseDir . '/app/PSQLGetTables.php',
     'translationmaker\\PSQLInsert' => $baseDir . '/app/PSQLInsert.php',
     'translationmaker\\PSQLSelect' => $baseDir . '/app/PSQLSelect.php',
-    'translationmaker\\DictionaryUpdator' => $baseDir . '/app/php/DictionaryUpdator.php',
 );

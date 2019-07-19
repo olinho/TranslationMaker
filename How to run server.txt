@@ -6,3 +6,6 @@ Then you can use this app.
 In case of error: Uncaught Error: Call to undefined function socket_create()
 Go to xampp/php/php.ini file and add extension
 extension=php_sockets.dll
+
+To update composer dependencies, after changes in PHP or adding new PHP scripts run from main project directory:
+composer dump-autoload -o

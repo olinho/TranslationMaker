@@ -22,6 +22,7 @@ class ComposerStaticInitfed447a03cae0a0b57d512077c60f570
 
     public static $classMap = array (
         'translationmaker\\Connection' => __DIR__ . '/../..' . '/app/Connection.php',
+        'translationmaker\\DictionaryManager' => __DIR__ . '/../..' . '/app/DictionaryManager.php',
         'translationmaker\\PHPWebSocket' => __DIR__ . '/../..' . '/app/PHPWebSocket.php',
         'translationmaker\\PSQLGetTables' => __DIR__ . '/../..' . '/app/PSQLGetTables.php',
         'translationmaker\\PSQLInsert' => __DIR__ . '/../..' . '/app/PSQLInsert.php',
